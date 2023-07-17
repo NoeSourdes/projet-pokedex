@@ -185,10 +185,36 @@ body {
 }
 
 @media screen and (max-width: 750px) {
+  header {
+    .main-titel {
+      font-size: 1.5rem !important;
+    }
+  }
   section {
     form{
       #search-bar-pokemon {
         width: 80vw !important;
+      }
+    }
+  }
+  .main-container {
+    .container {
+      .content {
+        width: 150px !important;
+        height: 150px !important;
+      }
+    }
+  }
+}
+@media screen and (max-width: 380px) {
+  .main-container {
+    .container {
+      .content {
+        width: 125px !important;
+        height: 125px !important;
+        h2 {
+          font-size: 20px;
+        }
       }
     }
   }

@@ -60,7 +60,8 @@ const addContent = async (arr) => {
   for (let i = 0; i < 30; i++) {
     const content = document.createElement("div");
     content.className = "content";
-    content.innerHTML = `<img src="${arr[i].pic}" alt="">`;
+    content.innerHTML += `<img src="${arr[i].pic}" alt="">`;
+    content.innerHTML += `<h2>${arr[i].name}</h2>`;
     container.appendChild(content);
   }
   finalyArray.splice(0, 30);

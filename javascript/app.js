@@ -20,6 +20,9 @@ buttonToggle.addEventListener("click", () => {
   blocTransition.classList.toggle("bloc-transition-theme-animation");
   body.style.overflowY = "hidden";
   setTimeout(() => {
+    body.style.overflowY = "visible";
+  }, 1500);
+  setTimeout(() => {
     blocTransition.style.display = "block";
     if (isColor1) {
       svgDivTransitionThemeBottom.style.fill = "#f6f8fc";
@@ -31,7 +34,6 @@ buttonToggle.addEventListener("click", () => {
     isColor1 = !isColor1;
     middleBlocTransitionBefore.classList.toggle("toggleColor");
     middleBlocTransition.classList.toggle("toggleColor");
-    body.style.overflowY = "visible";
   }, 2050);
   setTimeout(() => {
     body.classList.toggle("theme-dark");
@@ -82,6 +84,7 @@ const fetchPokemon = async (pokemon) => {
 
 const container = document.querySelector(".container");
 const intersection = document.querySelector(".div-intersection");
+const loader = document.querySelector(".loader");
 
 const addContent = async (arr) => {
   for (let i = 0; i < 30; i++) {
@@ -91,7 +94,9 @@ const addContent = async (arr) => {
     content.innerHTML += `<h2>${arr[i].name}</h2>`;
     container.appendChild(content);
   }
+
   finalyArray.splice(0, 30);
+  loader.style.transform = "translateY(-100vh)";
 };
 
 const handleIntersect = (entries) => {

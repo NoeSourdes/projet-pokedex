@@ -5,13 +5,40 @@ const buttonToogleThemeCircle = document.getElementById(
   "toogle-button__circle"
 );
 const body = document.body;
+const blocTransition = document.querySelector("#bloc-transition-theme");
+const middleBlocTransition = document.querySelector(".div-transition-theme");
+const middleBlocTransitionBefore = document.querySelector(".before-div");
+const svgDivTransitionThemeBottom = document.querySelector(
+  "#svg-div-transition-theme-bottom path"
+);
+const svgDivTransitionThemeTop = document.querySelector(
+  "#svg-div-transition-theme-top path"
+);
+let isColor1 = true;
 
 buttonToggle.addEventListener("click", () => {
-  body.classList.toggle("theme-dark");
-  body.classList.toggle("theme-light");
+  blocTransition.classList.toggle("bloc-transition-theme-animation");
+  body.style.overflowY = "hidden";
+  setTimeout(() => {
+    blocTransition.style.display = "block";
+    if (isColor1) {
+      svgDivTransitionThemeBottom.style.fill = "#f6f8fc";
+      svgDivTransitionThemeTop.style.fill = "#f6f8fc";
+    } else {
+      svgDivTransitionThemeBottom.style.fill = "#242b48";
+      svgDivTransitionThemeTop.style.fill = "#242b48";
+    }
+    isColor1 = !isColor1;
+    middleBlocTransitionBefore.classList.toggle("toggleColor");
+    middleBlocTransition.classList.toggle("toggleColor");
+    body.style.overflowY = "visible";
+  }, 2050);
+  setTimeout(() => {
+    body.classList.toggle("theme-dark");
+    body.classList.toggle("theme-light");
+  }, 500);
   buttonToogleThemeCircle.classList.toggle("mouv-button");
 });
-
 // gestion de l'API pokeAPI :
 
 let allPokemon = [];

@@ -16,11 +16,12 @@
   --clr-font-primary: #242b48;
   --clr-font-secondary: #828f98;
   --clr-primary: #fff;
-  --clr-button-toogle-theme: #2e335a;
+  --clr-div-button-toogle-theme: #2e335a;
+  --clr-button-toogle-theme: #f6f8fc;
   --clr-shadow-theme: #ebecf7;
   --clr-circle-logo: #ebecf7;
-  --clr-shadow-button-toggle-theme-1: #cfd0d9;
-  --clr-shadow-button-toggle-theme-2: #ffffff;
+  --clr-shadow-button-toggle-theme-1: #20263f;
+  --clr-shadow-button-toggle-theme-2: #283051;
 }
 
 .theme-light {
@@ -28,22 +29,24 @@
   --clr-font-primary: #242b48;
   --clr-font-secondary: #828f98;
   --clr-primary: #fff;
-  --clr-button-toogle-theme: #242b48;
+  --clr-div-button-toogle-theme: #2e335a;
+  --clr-button-toogle-theme: #f6f8fc;
   --clr-shadow-theme: #ebecf7;
   --clr-circle-logo: #ebecf7;
-  --clr-shadow-button-toggle-theme-1: #cfd0d9;
-  --clr-shadow-button-toggle-theme-2: #ffffff;
+  --clr-shadow-button-toggle-theme-1: #20263f;
+  --clr-shadow-button-toggle-theme-2: #283051;
 }
 .theme-dark {
   --clr-bcg: #242b48;
   --clr-font-primary: #fff;
   --clr-font-secondary: #828f98;
   --clr-primary: #2e335a;
-  --clr-button-toogle-theme: #f6f8fc;
+  --clr-div-button-toogle-theme: #fff;
+  --clr-button-toogle-theme: #2e335a;
   --clr-shadow-theme: #242b48;
   --clr-circle-logo: #2c3153;
-  --clr-shadow-button-toggle-theme-1: #20263f;
-  --clr-shadow-button-toggle-theme-2: #283051;
+  --clr-shadow-button-toggle-theme-1: #cfd0d9;
+  --clr-shadow-button-toggle-theme-2: #ffffff;
 }
 
 body {
@@ -54,26 +57,30 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
   #toogle-button {
+    cursor: pointer;
     position: absolute;
     width: 50px;
-    height: 25px;
+    height: 26px;
     top: 30px;
     right: 30px;
     border-radius: 50px;
-    background: var(--clr-primary);
+    background: var(--clr-div-button-toogle-theme);
     box-shadow: inset 1px -1px 5px var(--clr-shadow-button-toggle-theme-1),
       inset -1px 1px 5px var(--clr-shadow-button-toggle-theme-2);
-    cursor: pointer;
     #toogle-button__circle {
-      height: 25px;
-      width: 25px;
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      height: 20px;
+      width: 20px;
       border-radius: 25px;
       background: var(--clr-button-toogle-theme);
       transition: 0.3s ease-in-out;
     }
     .mouv-button {
-      margin-left: 25px;
+      left: 27px !important;
     }
   }
   .logo-pokedex {
@@ -142,7 +149,6 @@ body {
         border: none;
         outline: none;
         img {
-          cursor: pointer;
           width: 40px;
         }
       }
@@ -157,6 +163,7 @@ body {
       align-items: center;
       flex-wrap: wrap;
       .content {
+        cursor: pointer;
         margin: 20px;
         display: flex;
         flex-direction: column;
@@ -167,8 +174,6 @@ body {
         background: var(--clr-primary);
         border-radius: 20px;
         box-shadow: 0 14px 26px 0 var(--clr-shadow-theme);
-        cursor: pointer;
-        transition: 0.3s;
         &:hover {
           transform: scale(1.1);
         }
@@ -182,6 +187,43 @@ body {
       height: 100px;
     }
   }
+  #bloc-transition-theme {
+    visibility: hidden;
+    transition: 2s all;
+    width: 100%;
+    height: 200vh;
+    position: absolute;
+    top: 0;
+    transform: translateY(100vh);
+    left: 0;
+    .div-transition-theme {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #242b48;
+      .before-div {
+        top: -5px;
+        left: 0;
+        position: absolute;
+        width: 100%;
+        height: 10px;
+        background: #242b48;
+      }
+    }
+    .toggleColor {
+      background: #f6f8fc !important;
+    }
+    #svg-div-transition-theme-bottom path {
+      fill: #242b48;
+    }
+    #svg-div-transition-theme-top path {
+      fill: #242b48;
+    }
+  }
+  .bloc-transition-theme-animation {
+    visibility: visible !important;
+    transform: translateY(-260vh) !important;
+  }
 }
 
 @media screen and (max-width: 750px) {
@@ -191,7 +233,7 @@ body {
     }
   }
   section {
-    form{
+    form {
       #search-bar-pokemon {
         width: 80vw !important;
       }

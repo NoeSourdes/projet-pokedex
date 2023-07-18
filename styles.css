@@ -15,11 +15,12 @@
   --clr-font-primary: #242b48;
   --clr-font-secondary: #828f98;
   --clr-primary: #fff;
-  --clr-button-toogle-theme: #2e335a;
+  --clr-div-button-toogle-theme: #2e335a;
+  --clr-button-toogle-theme: #f6f8fc;
   --clr-shadow-theme: #ebecf7;
   --clr-circle-logo: #ebecf7;
-  --clr-shadow-button-toggle-theme-1: #cfd0d9;
-  --clr-shadow-button-toggle-theme-2: #ffffff;
+  --clr-shadow-button-toggle-theme-1: #20263f;
+  --clr-shadow-button-toggle-theme-2: #283051;
 }
 
 .theme-light {
@@ -27,11 +28,12 @@
   --clr-font-primary: #242b48;
   --clr-font-secondary: #828f98;
   --clr-primary: #fff;
-  --clr-button-toogle-theme: #242b48;
+  --clr-div-button-toogle-theme: #2e335a;
+  --clr-button-toogle-theme: #f6f8fc;
   --clr-shadow-theme: #ebecf7;
   --clr-circle-logo: #ebecf7;
-  --clr-shadow-button-toggle-theme-1: #cfd0d9;
-  --clr-shadow-button-toggle-theme-2: #ffffff;
+  --clr-shadow-button-toggle-theme-1: #20263f;
+  --clr-shadow-button-toggle-theme-2: #283051;
 }
 
 .theme-dark {
@@ -39,11 +41,12 @@
   --clr-font-primary: #fff;
   --clr-font-secondary: #828f98;
   --clr-primary: #2e335a;
-  --clr-button-toogle-theme: #f6f8fc;
+  --clr-div-button-toogle-theme: #fff;
+  --clr-button-toogle-theme: #2e335a;
   --clr-shadow-theme: #242b48;
   --clr-circle-logo: #2c3153;
-  --clr-shadow-button-toggle-theme-1: #20263f;
-  --clr-shadow-button-toggle-theme-2: #283051;
+  --clr-shadow-button-toggle-theme-1: #cfd0d9;
+  --clr-shadow-button-toggle-theme-2: #ffffff;
 }
 
 body {
@@ -54,27 +57,31 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow-x: hidden;
 }
 body #toogle-button {
+  cursor: pointer;
   position: absolute;
   width: 50px;
-  height: 25px;
+  height: 26px;
   top: 30px;
   right: 30px;
   border-radius: 50px;
-  background: var(--clr-primary);
+  background: var(--clr-div-button-toogle-theme);
   box-shadow: inset 1px -1px 5px var(--clr-shadow-button-toggle-theme-1), inset -1px 1px 5px var(--clr-shadow-button-toggle-theme-2);
-  cursor: pointer;
 }
 body #toogle-button #toogle-button__circle {
-  height: 25px;
-  width: 25px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  height: 20px;
+  width: 20px;
   border-radius: 25px;
   background: var(--clr-button-toogle-theme);
   transition: 0.3s ease-in-out;
 }
 body #toogle-button .mouv-button {
-  margin-left: 25px;
+  left: 27px !important;
 }
 body .logo-pokedex {
   z-index: -1;
@@ -145,7 +152,6 @@ body section form .button-search-pokedex {
   outline: none;
 }
 body section form .button-search-pokedex img {
-  cursor: pointer;
   width: 40px;
 }
 body .main-container {
@@ -159,6 +165,7 @@ body .main-container .container {
   flex-wrap: wrap;
 }
 body .main-container .container .content {
+  cursor: pointer;
   margin: 20px;
   display: flex;
   flex-direction: column;
@@ -169,8 +176,6 @@ body .main-container .container .content {
   background: var(--clr-primary);
   border-radius: 20px;
   box-shadow: 0 14px 26px 0 var(--clr-shadow-theme);
-  cursor: pointer;
-  transition: 0.3s;
 }
 body .main-container .container .content:hover {
   transform: scale(1.1);
@@ -181,6 +186,43 @@ body .main-container .container .content h2 {
 body .main-container .div-intersection {
   width: 100%;
   height: 100px;
+}
+body #bloc-transition-theme {
+  visibility: hidden;
+  transition: 2s all;
+  width: 100%;
+  height: 200vh;
+  position: absolute;
+  top: 0;
+  transform: translateY(100vh);
+  left: 0;
+}
+body #bloc-transition-theme .div-transition-theme {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #242b48;
+}
+body #bloc-transition-theme .div-transition-theme .before-div {
+  top: -5px;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 10px;
+  background: #242b48;
+}
+body #bloc-transition-theme .toggleColor {
+  background: #f6f8fc !important;
+}
+body #bloc-transition-theme #svg-div-transition-theme-bottom path {
+  fill: #242b48;
+}
+body #bloc-transition-theme #svg-div-transition-theme-top path {
+  fill: #242b48;
+}
+body .bloc-transition-theme-animation {
+  visibility: visible !important;
+  transform: translateY(-260vh) !important;
 }
 
 @media screen and (max-width: 750px) {

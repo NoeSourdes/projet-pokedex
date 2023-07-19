@@ -21,7 +21,7 @@ buttonToggle.addEventListener("click", () => {
   body.style.overflowY = "hidden";
   setTimeout(() => {
     body.style.overflowY = "visible";
-  }, 1500);
+  }, 1700);
   setTimeout(() => {
     blocTransition.style.display = "block";
     if (isColor1) {
@@ -34,7 +34,7 @@ buttonToggle.addEventListener("click", () => {
     isColor1 = !isColor1;
     middleBlocTransitionBefore.classList.toggle("toggleColor");
     middleBlocTransition.classList.toggle("toggleColor");
-  }, 2050);
+  }, 2000);
   setTimeout(() => {
     body.classList.toggle("theme-dark");
     body.classList.toggle("theme-light");
@@ -45,6 +45,8 @@ buttonToggle.addEventListener("click", () => {
 
 let allPokemon = [];
 let finalyArray = [];
+const urlPokeIdSpecies = "https://pokeapi.co/api/v2/pokemon-species/2";
+const urlPokeIdPicture = "https://pokeapi.co/api/v2/pokemon/";
 
 const fetchData = async () => {
   const url = "https://pokeapi.co/api/v2/pokemon?limit=500";
@@ -90,11 +92,29 @@ const addContent = async (arr) => {
   for (let i = 0; i < 30; i++) {
     const content = document.createElement("div");
     content.className = "content";
-    content.innerHTML += `<img src="${arr[i].pic}" alt="">`;
+    content.innerHTML += `<img src="${arr[i].pic}" alt="image-pokemon">`;
     content.innerHTML += `<h2>${arr[i].name}</h2>`;
+    content.dataset.pokeId = arr[i].id;
+    const handleClickInfoPoke = async (e) => {
+      displayInfoPoke();
+      const contentPoke = e.currentTarget;
+      const pokeId = contentPoke.dataset.pokeId;
+      const resultInfoPoke = await fetchDataSpeciesPokemonHandleCLick(
+        urlPokeIdSpecies,
+        pokeId
+      );
+      const resultPicturePoke = await fetchDataPicturePokemonHandleClick(
+        urlPokeIdPicture,
+        pokeId
+      );
+      let urlPicturePoke = resultPicturePoke.sprites.front_default;
+      const modal = document.getElementById("myModal");
+      modal.innerHTML += `<img src="${urlPicturePoke}" alt="image-pokemon">`;
+    };
+
+    content.addEventListener("click", handleClickInfoPoke);
     container.appendChild(content);
   }
-
   finalyArray.splice(0, 30);
   loader.style.transform = "translateY(-100vh)";
 };
@@ -106,3 +126,30 @@ const handleIntersect = (entries) => {
 };
 
 new IntersectionObserver(handleIntersect).observe(intersection);
+
+// gestion du click sur content pour afficher les infos du pokemon dans une pop-up :
+const fetchDataSpeciesPokemonHandleCLick = async (urlPokeIdSpecies, pokeId) => {
+  const result = fetch(urlPokeIdSpecies + pokeId);
+  return (await result).json();
+};
+const fetchDataPicturePokemonHandleClick = async (urlPokeIdPicture, pokeId) => {
+  const result = fetch(urlPokeIdPicture + pokeId);
+  return (await result).json();
+};
+
+const displayInfoPoke = () => {
+  const modalAndOverlay = document.querySelector(".div-modal-and-overlay");
+  const overlay = document.querySelector(".overlay-modal");
+  const close = document.querySelector(".close");
+  const body = document.body;
+  body.style.overflowY = "hidden";
+  modalAndOverlay.style.display = "block";
+  close.addEventListener("click", () => {
+    modalAndOverlay.style.display = "none";
+    body.style.overflowY = "visible";
+  });
+  overlay.addEventListener("click", () => {
+    modalAndOverlay.style.display = "none";
+    body.style.overflowY = "visible";
+  });
+};

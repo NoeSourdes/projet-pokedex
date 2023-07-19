@@ -16,6 +16,7 @@
   --clr-font-secondary: #828f98;
   --clr-primary: #fff;
   --clr-div-button-toogle-theme: #2e335a;
+  --clr-overlay: 36, 43, 72;
   --clr-button-toogle-theme: #f6f8fc;
   --clr-shadow-theme: #ebecf7;
   --clr-circle-logo: #ebecf7;
@@ -29,6 +30,7 @@
   --clr-font-secondary: #828f98;
   --clr-primary: #fff;
   --clr-div-button-toogle-theme: #2e335a;
+  --clr-overlay: 46, 51, 90;
   --clr-button-toogle-theme: #f6f8fc;
   --clr-shadow-theme: #ebecf7;
   --clr-circle-logo: #ebecf7;
@@ -42,6 +44,7 @@
   --clr-font-secondary: #828f98;
   --clr-primary: #2e335a;
   --clr-div-button-toogle-theme: #fff;
+  --clr-overlay: 0, 0, 0;
   --clr-button-toogle-theme: #2e335a;
   --clr-shadow-theme: #242b48;
   --clr-circle-logo: #2c3153;
@@ -60,6 +63,7 @@ body {
   overflow-x: hidden;
 }
 body .loader {
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -240,6 +244,43 @@ body #bloc-transition-theme #svg-div-transition-theme-top path {
 body .bloc-transition-theme-animation {
   visibility: visible !important;
   transform: translateY(-260vh) !important;
+}
+body .div-modal-and-overlay {
+  display: none;
+}
+body .div-modal-and-overlay .overlay-modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--clr-overlay), 0.5);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+body .div-modal-and-overlay .modal {
+  position: absolute;
+  width: 60%;
+  height: 50%;
+  border-radius: 20px;
+  background: var(--clr-primary);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body .div-modal-and-overlay .modal img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+body .div-modal-and-overlay .modal .close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  cursor: pointer;
+  color: var(--clr-font-primary);
 }
 
 @keyframes animation-loader {

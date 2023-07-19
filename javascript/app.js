@@ -45,7 +45,7 @@ buttonToggle.addEventListener("click", () => {
 
 let allPokemon = [];
 let finalyArray = [];
-const urlPokeIdSpecies = "https://pokeapi.co/api/v2/pokemon-species/2";
+const urlPokeIdSpecies = "https://pokeapi.co/api/v2/pokemon-species/";
 const urlPokeIdPicture = "https://pokeapi.co/api/v2/pokemon/";
 
 const fetchData = async () => {
@@ -98,7 +98,8 @@ const addContent = async (arr) => {
     const handleClickInfoPoke = async (e) => {
       displayInfoPoke();
       const contentPoke = e.currentTarget;
-      const pokeId = contentPoke.dataset.pokeId;
+      let pokeId = contentPoke.dataset.pokeId;
+      console.log(pokeId);
       const resultInfoPoke = await fetchDataSpeciesPokemonHandleCLick(
         urlPokeIdSpecies,
         pokeId
@@ -107,7 +108,9 @@ const addContent = async (arr) => {
         urlPokeIdPicture,
         pokeId
       );
+      pokeId = 0;
       let urlPicturePoke = resultPicturePoke.sprites.front_default;
+      console.log(urlPicturePoke);
       const modalImg = document.querySelector(".imgInfoPoke");
       modalImg.src = urlPicturePoke;
     };

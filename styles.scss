@@ -243,7 +243,7 @@ body {
   }
   .bloc-transition-theme-animation {
     visibility: visible !important;
-    transform: translateY(-260vh) !important;
+    transform: translateY(-350vh) !important;
   }
   #bloc-transition-info-poke {
     visibility: hidden;
@@ -278,10 +278,6 @@ body {
     #svg-div-transition-theme-top path {
       fill: var(--clr-bcg);
     }
-  }
-  .bloc-transition-info-poke-animation {
-    visibility: visible !important;
-    transform: translateY(-260vh) !important;
   }
   .div-modal-and-overlay {
     position: fixed;

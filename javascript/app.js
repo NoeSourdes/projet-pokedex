@@ -146,22 +146,22 @@ const displayInfoPoke = () => {
     "bloc-transition-info-poke"
   );
   setTimeout(() => {
-    body.style.overflowY = "hidden";
     modalAndOverlay.style.display = "block";
   }, 500);
+  body.style.overflowY = "hidden";
   blocTransitionInfoPoke.classList.add("bloc-transition-theme-animation");
   close.addEventListener("click", () => {
     setTimeout(() => {
       modalAndOverlay.style.display = "none";
-      body.style.overflowY = "visible";
     }, 500);
+    body.style.overflowY = "visible";
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
   overlay.addEventListener("click", () => {
     setTimeout(() => {
       modalAndOverlay.style.display = "none";
-      body.style.overflowY = "visible";
     }, 500);
+    body.style.overflowY = "visible";
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
 };

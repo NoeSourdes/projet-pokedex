@@ -246,6 +246,11 @@ body .bloc-transition-theme-animation {
   transform: translateY(-260vh) !important;
 }
 body .div-modal-and-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   display: none;
 }
 body .div-modal-and-overlay .overlay-modal {

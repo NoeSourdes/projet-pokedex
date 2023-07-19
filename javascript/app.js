@@ -142,14 +142,28 @@ const displayInfoPoke = () => {
   const overlay = document.querySelector(".overlay-modal");
   const close = document.querySelector(".close");
   const body = document.body;
-  body.style.overflowY = "hidden";
-  modalAndOverlay.style.display = "block";
+  const blocTransitionInfoPoke = document.getElementById(
+    "bloc-transition-info-poke"
+  );
+  setTimeout(() => {
+    body.style.overflowY = "hidden";
+    modalAndOverlay.style.display = "block";
+  }, 500);
+  blocTransitionInfoPoke.classList.add("bloc-transition-theme-animation");
   close.addEventListener("click", () => {
-    modalAndOverlay.style.display = "none";
-    body.style.overflowY = "visible";
+    setTimeout(() => {
+      modalAndOverlay.style.display = "none";
+      body.style.overflowY = "visible";
+    }, 500);
+    blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
   overlay.addEventListener("click", () => {
-    modalAndOverlay.style.display = "none";
-    body.style.overflowY = "visible";
+    setTimeout(() => {
+      modalAndOverlay.style.display = "none";
+      body.style.overflowY = "visible";
+    }, 500);
+    blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
 };
+
+// gestion de l'animation bloc info pokemon :

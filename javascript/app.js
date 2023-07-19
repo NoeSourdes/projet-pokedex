@@ -108,8 +108,8 @@ const addContent = async (arr) => {
         pokeId
       );
       let urlPicturePoke = resultPicturePoke.sprites.front_default;
-      const modal = document.getElementById("myModal");
-      modal.innerHTML += `<img src="${urlPicturePoke}" alt="image-pokemon">`;
+      const modalImg = document.querySelector(".imgInfoPoke");
+      modalImg.src = urlPicturePoke;
     };
 
     content.addEventListener("click", handleClickInfoPoke);

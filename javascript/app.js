@@ -49,7 +49,7 @@ const urlPokeIdSpecies = "https://pokeapi.co/api/v2/pokemon-species/";
 const urlPokeIdPicture = "https://pokeapi.co/api/v2/pokemon/";
 
 const fetchData = async () => {
-  const url = "https://pokeapi.co/api/v2/pokemon?limit=500";
+  const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
   const result = await fetch(url);
   const data = await result.json();
   data.results.forEach((pokemon) => {

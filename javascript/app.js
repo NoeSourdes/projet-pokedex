@@ -47,9 +47,10 @@ let allPokemon = [];
 let finalyArray = [];
 const urlPokeIdSpecies = "https://pokeapi.co/api/v2/pokemon-species/";
 const urlPokeIdPicture = "https://pokeapi.co/api/v2/pokemon/";
+const loader = document.querySelector(".loader");
 
 const fetchData = async () => {
-  const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
+  const url = "https://pokeapi.co/api/v2/pokemon?limit=500";
   const result = await fetch(url);
   const data = await result.json();
   data.results.forEach((pokemon) => {
@@ -75,19 +76,18 @@ const fetchPokemon = async (pokemon) => {
   objPokemon.name = dataSpeciesPokemon.names[4].name;
   allPokemon.push(objPokemon);
   if (allPokemon.length === 496) {
-    finalyArray = allPokemon.sort((a, b) => {
-      return a.id - b.id;
-    });
+    finalyArray = allPokemon
+      .sort((a, b) => {
+        return a.id - b.id;
+      })
+      .slice(0, 30);
     await addContent(finalyArray);
+    loader.style.transform = "translateY(-100vh)";
   }
 };
 
-// gestion du scroll infini :
-
+// creation des cartes pokemon :
 const container = document.querySelector(".container");
-const intersection = document.querySelector(".div-intersection");
-const loader = document.querySelector(".loader");
-
 const addContent = async (arr) => {
   for (let i = 0; i < 30; i++) {
     const content = document.createElement("div");
@@ -108,7 +108,6 @@ const addContent = async (arr) => {
         urlPokeIdPicture,
         pokeId
       );
-      pokeId = 0;
       let urlPicturePoke = resultPicturePoke.sprites.front_default;
       console.log(urlPicturePoke);
       const modalImg = document.querySelector(".imgInfoPoke");
@@ -118,17 +117,9 @@ const addContent = async (arr) => {
     content.addEventListener("click", handleClickInfoPoke);
     container.appendChild(content);
   }
-  finalyArray.splice(0, 30);
-  loader.style.transform = "translateY(-100vh)";
 };
 
-const handleIntersect = (entries) => {
-  if (entries[0].isIntersecting) {
-    addContent(finalyArray);
-  }
-};
-
-new IntersectionObserver(handleIntersect).observe(intersection);
+// gestion du scroll infini :
 
 // gestion du click sur content pour afficher les infos du pokemon dans une pop-up :
 const fetchDataSpeciesPokemonHandleCLick = async (urlPokeIdSpecies, pokeId) => {

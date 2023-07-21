@@ -23,6 +23,7 @@
   --clr-circle-logo: #ebecf7;
   --clr-shadow-button-toggle-theme-1: #20263f;
   --clr-shadow-button-toggle-theme-2: #283051;
+  --clr-red: #ff503a;
 }
 
 .theme-light {
@@ -37,6 +38,7 @@
   --clr-circle-logo: #ebecf7;
   --clr-shadow-button-toggle-theme-1: #20263f;
   --clr-shadow-button-toggle-theme-2: #283051;
+  --clr-red: #ff503a;
 }
 .theme-dark {
   --clr-bcg: #242b48;
@@ -50,6 +52,7 @@
   --clr-circle-logo: #2c3153;
   --clr-shadow-button-toggle-theme-1: #cfd0d9;
   --clr-shadow-button-toggle-theme-2: #ffffff;
+  --clr-red: #ff503a;
 }
 
 body {
@@ -203,10 +206,6 @@ body {
         }
       }
     }
-    .div-intersection {
-      width: 100%;
-      height: 100px;
-    }
   }
   #bloc-transition-theme {
     visibility: hidden;
@@ -252,31 +251,39 @@ body {
     width: 100%;
     height: 200vh;
     position: fixed;
-    top: 0;
     transform: translateY(100vh);
+    top: 0;
     left: 0;
     .div-transition-theme {
       position: relative;
       width: 100%;
       height: 100%;
-      background: var(--clr-bcg);
+      background: var(--clr-red);
       .before-div {
         top: -5px;
         left: 0;
         position: absolute;
         width: 100%;
         height: 10px;
-        background: var(--clr-bcg);
+        background: var(--clr-red);
       }
+    }
+    .logo-pokedex-transition-info {
+      width: 70%;
+      z-index: 2000000;
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
     .toggleColor {
       background: var(--clr-bcg) !important;
     }
     #svg-div-transition-theme-bottom path {
-      fill: var(--clr-bcg);
+      fill: var(--clr-red);
     }
     #svg-div-transition-theme-top path {
-      fill: var(--clr-bcg);
+      fill: var(--clr-red);
     }
   }
   .div-modal-and-overlay {

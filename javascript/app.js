@@ -89,7 +89,7 @@ const fetchPokemon = async (pokemon) => {
 // creation des cartes pokemon :
 const container = document.querySelector(".container");
 const addContent = async (arr) => {
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < arr.length; i++) {
     const content = document.createElement("div");
     content.className = "content";
     content.innerHTML += `<img src="${arr[i].pic}" alt="image-pokemon">`;
@@ -121,6 +121,31 @@ const addContent = async (arr) => {
 
 // gestion du scroll infini :
 
+window.addEventListener("scroll", () => {
+  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+  // scrollTop = scroll depuis le top
+  // scrollHeight = scroll total
+  // clientHeight = hauteur de la fenêtre, partie visible
+
+  // console.log(scrollTop, scrollHeight, clientHeight);
+
+  if (clientHeight + scrollTop >= scrollHeight - 20) {
+    addPoke(6);
+  }
+});
+
+let index = 30;
+
+function addPoke(nb) {
+  if (index > 496) {
+    return;
+  }
+  const arrToAdd = allPokemon.slice(index, index + nb);
+  // console.log(index, index + nb);
+  addContent(arrToAdd);
+  index += nb;
+}
+
 // gestion du click sur content pour afficher les infos du pokemon dans une pop-up :
 const fetchDataSpeciesPokemonHandleCLick = async (urlPokeIdSpecies, pokeId) => {
   const result = fetch(urlPokeIdSpecies + pokeId);
@@ -141,20 +166,20 @@ const displayInfoPoke = () => {
   );
   setTimeout(() => {
     modalAndOverlay.style.display = "block";
-  }, 500);
+  }, 700);
   body.style.overflowY = "hidden";
   blocTransitionInfoPoke.classList.add("bloc-transition-theme-animation");
   close.addEventListener("click", () => {
     setTimeout(() => {
       modalAndOverlay.style.display = "none";
-    }, 500);
+    }, 700);
     body.style.overflowY = "visible";
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
   overlay.addEventListener("click", () => {
     setTimeout(() => {
       modalAndOverlay.style.display = "none";
-    }, 500);
+    }, 700);
     body.style.overflowY = "visible";
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });

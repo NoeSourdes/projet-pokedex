@@ -34,11 +34,11 @@ buttonToggle.addEventListener("click", () => {
     isColor1 = !isColor1;
     middleBlocTransitionBefore.classList.toggle("toggleColor");
     middleBlocTransition.classList.toggle("toggleColor");
-  }, 2000);
+  }, 1800);
   setTimeout(() => {
     body.classList.toggle("theme-dark");
     body.classList.toggle("theme-light");
-  }, 500);
+  }, 560);
   buttonToogleThemeCircle.classList.toggle("mouv-button");
 });
 // gestion de l'API pokeAPI :
@@ -50,7 +50,7 @@ const urlPokeIdPicture = "https://pokeapi.co/api/v2/pokemon/";
 const loader = document.querySelector(".loader");
 
 const fetchData = async () => {
-  const url = "https://pokeapi.co/api/v2/pokemon?limit=500";
+  const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
   const result = await fetch(url);
   const data = await result.json();
   data.results.forEach((pokemon) => {
@@ -75,7 +75,7 @@ const fetchPokemon = async (pokemon) => {
   const dataSpeciesPokemon = await fetchSpeciesPokemon.json();
   objPokemon.name = dataSpeciesPokemon.names[4].name;
   allPokemon.push(objPokemon);
-  if (allPokemon.length === 496) {
+  if (allPokemon.length === 972) {
     finalyArray = allPokemon
       .sort((a, b) => {
         return a.id - b.id;
@@ -172,14 +172,14 @@ const displayInfoPoke = () => {
   close.addEventListener("click", () => {
     setTimeout(() => {
       modalAndOverlay.style.display = "none";
-    }, 700);
+    }, 800);
     body.style.overflowY = "visible";
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
   overlay.addEventListener("click", () => {
     setTimeout(() => {
       modalAndOverlay.style.display = "none";
-    }, 700);
+    }, 800);
     body.style.overflowY = "visible";
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });

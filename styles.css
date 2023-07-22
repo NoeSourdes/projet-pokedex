@@ -58,7 +58,6 @@
 body {
   margin-top: 100px;
   background: var(--clr-bcg);
-  transition: 0.3s;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -212,7 +211,7 @@ body #bloc-transition-theme {
   transition: 2s all;
   width: 100%;
   height: 200vh;
-  position: absolute;
+  position: fixed;
   top: 0;
   transform: translateY(100vh);
   left: 0;
@@ -247,7 +246,7 @@ body .bloc-transition-theme-animation {
 body #bloc-transition-info-poke {
   visibility: hidden;
   z-index: 100000;
-  transition: 3s all;
+  transition: 2.5s all;
   width: 100%;
   height: 200vh;
   position: fixed;

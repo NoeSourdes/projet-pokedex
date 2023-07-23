@@ -199,3 +199,22 @@ const displayInfoPoke = () => {
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
 };
+
+// system de recherche de pokemon :
+const searchBar = document.getElementById("search-bar-pokemon");
+const resetBouton = document.querySelector(".button-search-pokedex");
+
+function research() {
+  const valueInput = searchBar.value.toLowerCase();
+  const filteredPokemon = allPokemon.filter((pokemon) =>
+    pokemon.name.toLowerCase().includes(valueInput)
+  );
+  container.innerHTML = "";
+  addContent(filteredPokemon);
+}
+searchBar.addEventListener("keyup", research);
+
+resetBouton.addEventListener("click", (e) => {
+  e.preventDefault();
+  research();
+});

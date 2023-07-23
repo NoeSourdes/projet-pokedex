@@ -213,7 +213,7 @@ body .main-container .container .content img {
 }
 body .main-container .container .content h2 {
   color: var(--clr-font-primary);
-  margin: 20px 0;
+  margin: 15px 0 20px 0;
 }
 body .main-container .container .content span {
   color: var(--clr-font-secondary);

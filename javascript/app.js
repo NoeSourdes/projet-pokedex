@@ -87,13 +87,38 @@ const fetchPokemon = async (pokemon) => {
 };
 
 // creation des cartes pokemon :
+const typeColors = {
+  normal: "#BCBCAC",
+  fighting: "#BC5442",
+  flying: "#669AFF",
+  poison: "#AB549A",
+  ground: "#DEBC54",
+  rock: "#BCAC66",
+  bug: "#ABBC1C",
+  ghost: "#6666BC",
+  steel: "#ABACBC",
+  fire: "#FF421C",
+  water: "#2F9AFF",
+  grass: "#78CD54",
+  electric: "#FFCD30",
+  psychic: "#FF549A",
+  ice: "#78DEFF",
+  dragon: "#7866EF",
+  dark: "#785442",
+  fairy: "#FFACFF",
+  shadow: "#0E2E4C",
+};
+
 const container = document.querySelector(".container");
 const addContent = async (arr) => {
   for (let i = 0; i < arr.length; i++) {
     const content = document.createElement("div");
     content.className = "content";
     content.innerHTML += `<img src="${arr[i].pic}" alt="image-pokemon">`;
+    content.innerHTML += `<span>Nº${arr[i].id}</span>`;
     content.innerHTML += `<h2>${arr[i].name}</h2>`;
+    const pokeTypeColor = typeColors[arr[i].type];
+    content.innerHTML += `<span style="background:${pokeTypeColor}; color: #ffffff; border-radius: 5px; padding: 3px 5px">${arr[i].type}</span>`;
     content.dataset.pokeId = arr[i].id;
     const handleClickInfoPoke = async (e) => {
       displayInfoPoke();
@@ -174,5 +199,3 @@ const displayInfoPoke = () => {
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
 };
-
-// gestion de l'animation bloc info pokemon :

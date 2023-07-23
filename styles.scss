@@ -186,9 +186,10 @@ body {
       align-items: center;
       flex-wrap: wrap;
       .content {
+        position: relative;
         transition: 0.3s;
         cursor: pointer;
-        margin: 20px;
+        margin: 40px 20px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -201,8 +202,18 @@ body {
         &:hover {
           transform: scale(1.1);
         }
+        img {
+          position: absolute;
+          top: -50px;
+          left: 50%;
+          transform: translate(-50%);
+        }
         h2 {
           color: var(--clr-font-primary);
+          margin: 20px 0;
+        }
+        span {
+          color: var(--clr-font-secondary);
         }
       }
     }

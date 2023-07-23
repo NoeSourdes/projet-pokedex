@@ -188,9 +188,10 @@ body .main-container .container {
   flex-wrap: wrap;
 }
 body .main-container .container .content {
+  position: relative;
   transition: 0.3s;
   cursor: pointer;
-  margin: 20px;
+  margin: 40px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -204,8 +205,18 @@ body .main-container .container .content {
 body .main-container .container .content:hover {
   transform: scale(1.1);
 }
+body .main-container .container .content img {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translate(-50%);
+}
 body .main-container .container .content h2 {
   color: var(--clr-font-primary);
+  margin: 20px 0;
+}
+body .main-container .container .content span {
+  color: var(--clr-font-secondary);
 }
 body #bloc-transition-theme {
   visibility: hidden;

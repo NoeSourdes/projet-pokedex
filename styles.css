@@ -359,6 +359,9 @@ body .div-modal-and-overlay .modal .close {
   .main-container .container .content h2 {
     margin: 0 0 5px 0 !important;
   }
+  .main-container .container .content img {
+    margin-top: 10px;
+  }
 }
 body::-webkit-scrollbar {
   display: none;

@@ -209,7 +209,13 @@ function research() {
   const filteredPokemon = allPokemon.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(valueInput)
   );
-  container.innerHTML = "";
+  console.log(filteredPokemon);
+  if (filteredPokemon.length === 0) {
+    container.innerHTML = `<h2>Aucun pokémon n'a été trouvé</h2>`;
+  } else {
+    container.innerHTML = "";
+  }
+
   addContent(filteredPokemon);
 }
 searchBar.addEventListener("keyup", research);

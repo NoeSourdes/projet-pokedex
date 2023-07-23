@@ -115,7 +115,7 @@ const addContent = async (arr) => {
     const content = document.createElement("div");
     content.className = "content";
     content.innerHTML += `<img src="${arr[i].pic}" alt="image-pokemon">`;
-    content.innerHTML += `<span>Nº${arr[i].id}</span>`;
+    content.innerHTML += `<span class="id-poke">Nº${arr[i].id}</span>`;
     content.innerHTML += `<h2>${arr[i].name}</h2>`;
     const pokeTypeColor = typeColors[arr[i].type];
     content.innerHTML += `<span style="background:${pokeTypeColor}; color: #ffffff; border-radius: 5px; padding: 3px 5px">${arr[i].type}</span>`;

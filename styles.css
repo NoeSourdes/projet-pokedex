@@ -359,7 +359,7 @@ body .div-modal-and-overlay .modal .close {
   .main-container .container .content h2 {
     margin: 0 0 5px 0 !important;
   }
-  .main-container .container .content img {
+  .main-container .container .content .id-poke {
     margin-top: 10px;
   }
 }

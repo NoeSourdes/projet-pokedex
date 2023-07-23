@@ -355,6 +355,8 @@ body .div-modal-and-overlay .modal .close {
   .main-container .container .content {
     width: 150px !important;
     height: 150px !important;
+  }
+  .main-container .container .content h2 {
     margin: 15px 0 !important;
   }
 }

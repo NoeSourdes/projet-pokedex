@@ -188,6 +188,7 @@ body .main-container .container {
   flex-wrap: wrap;
 }
 body .main-container .container .content {
+  transition: 0.3s;
   cursor: pointer;
   margin: 20px;
   display: flex;

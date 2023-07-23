@@ -120,31 +120,21 @@ const addContent = async (arr) => {
 };
 
 // gestion du scroll infini :
+function handleScroll() {
+  const scrollTop = window.scrollY;
+  const windowHeight = window.innerHeight;
+  const documentHeight = document.documentElement.scrollHeight;
 
-window.addEventListener("scroll", () => {
-  const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
-  // scrollTop = scroll depuis le top
-  // scrollHeight = scroll total
-  // clientHeight = hauteur de la fenêtre, partie visible
-
-  // console.log(scrollTop, scrollHeight, clientHeight);
-
-  if (clientHeight + scrollTop >= scrollHeight - 20) {
-    addPoke(6);
+  if (scrollTop + windowHeight >= documentHeight) {
+    const nextBatch = allPokemon.slice(
+      finalyArray.length,
+      finalyArray.length + 30
+    );
+    finalyArray = [...finalyArray, ...nextBatch];
+    addContent(nextBatch);
   }
-});
-
-let index = 30;
-
-function addPoke(nb) {
-  if (index > 496) {
-    return;
-  }
-  const arrToAdd = allPokemon.slice(index, index + nb);
-  // console.log(index, index + nb);
-  addContent(arrToAdd);
-  index += nb;
 }
+window.addEventListener("scroll", handleScroll);
 
 // gestion du click sur content pour afficher les infos du pokemon dans une pop-up :
 const fetchDataSpeciesPokemonHandleCLick = async (urlPokeIdSpecies, pokeId) => {

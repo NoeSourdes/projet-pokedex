@@ -186,6 +186,7 @@ body {
       align-items: center;
       flex-wrap: wrap;
       .content {
+        transition: 0.3s;
         cursor: pointer;
         margin: 20px;
         display: flex;

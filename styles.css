@@ -357,7 +357,7 @@ body .div-modal-and-overlay .modal .close {
     height: 150px !important;
   }
   .main-container .container .content h2 {
-    margin: 15px 0 !important;
+    margin: 10px 0 !important;
   }
 }
 body::-webkit-scrollbar {
@@ -371,7 +371,6 @@ body::-webkit-scrollbar {
   }
   .main-container .container .content h2 {
     font-size: 20px;
-    margin: 10px 0 !important;
   }
 }
 @media screen and (max-width: 960px) {

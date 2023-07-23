@@ -34,11 +34,11 @@ buttonToggle.addEventListener("click", () => {
     isColor1 = !isColor1;
     middleBlocTransitionBefore.classList.toggle("toggleColor");
     middleBlocTransition.classList.toggle("toggleColor");
-  }, 1800);
+  }, 2500);
   setTimeout(() => {
     body.classList.toggle("theme-dark");
     body.classList.toggle("theme-light");
-  }, 560);
+  }, 550);
   buttonToogleThemeCircle.classList.toggle("mouv-button");
 });
 // gestion de l'API pokeAPI :

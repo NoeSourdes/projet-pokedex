@@ -365,6 +365,7 @@ body {
       .content {
         width: 150px !important;
         height: 150px !important;
+        margin: 15px 0 !important;
       }
     }
   }
@@ -380,6 +381,7 @@ body::-webkit-scrollbar {
         height: 125px !important;
         h2 {
           font-size: 20px;
+          margin: 10px 0 !important;
         }
       }
     }

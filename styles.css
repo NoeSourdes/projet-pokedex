@@ -357,7 +357,7 @@ body .div-modal-and-overlay .modal .close {
     height: 150px !important;
   }
   .main-container .container .content h2 {
-    margin: 5px 0 !important;
+    margin: 0 0 5px 0 !important;
   }
 }
 body::-webkit-scrollbar {

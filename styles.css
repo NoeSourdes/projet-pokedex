@@ -496,6 +496,7 @@ body::-webkit-scrollbar {
     border-radius: 0 !important;
     height: 100% !important;
     width: 100% !important;
+    max-height: 100% !important;
   }
   .div-modal-and-overlay .modal .content-modal {
     flex-direction: column !important;

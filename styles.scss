@@ -510,6 +510,7 @@ body::-webkit-scrollbar {
       border-radius: 0 !important;
       height: 100% !important;
       width: 100% !important;
+      max-height: 100% !important;
       .content-modal {
         flex-direction: column !important;
       }

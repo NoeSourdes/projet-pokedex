@@ -5,8 +5,8 @@ window.onscroll = function () {
 function scrollFunction() {
   const button = document.querySelector(".button-scroll-to-top");
   if (
-    document.body.scrollTop > 100 ||
-    document.documentElement.scrollTop > 100
+    document.body.scrollTop > 400 ||
+    document.documentElement.scrollTop > 400
   ) {
     button.style.opacity = "1";
     button.style.visibility = "visible";

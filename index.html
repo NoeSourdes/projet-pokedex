@@ -64,7 +64,9 @@
     </section>
     <main class="main-container">
       <div class="container"></div>
-      <button class="button-scroll-to-top"onclick="topFunction()"><ion-icon name="chevron-up-outline"></ion-icon></button>
+      <button class="button-scroll-to-top" onclick="topFunction()">
+        <ion-icon name="chevron-up-outline"></ion-icon>
+      </button>
     </main>
     <div id="bloc-transition-theme">
       <svg
@@ -126,7 +128,26 @@
       <div id="myModal" class="modal">
         <div class="content-modal"></div>
         <div class="close">&times;</div>
-        <img src="" alt="picture-pokemon-info" class="imgInfoPoke" />
+        <div class="content-modal">
+          <div class="left">
+            <img src="" alt="picture-pokemon-info" class="imgInfoPoke" />
+            <p id="id-pokemon"></p>
+            <h2 id="name-pokemon"></h2>
+            <p id="type-pokemon"></p>
+            <p id="info-pokemon"></p>
+            <div class="height-and-weight">
+              <div class="height">
+                <p class="p-height">Hauteur</p>
+                <p id="height-pokemon"></p>
+              </div>
+              <div class="weight">
+                <p class="p-weight">Poids</p>
+                <p id="weight-pokemon"></p>
+              </div>
+            </div>
+          </div>
+          <div class="right"></div>
+        </div>
       </div>
     </div>
   </body>

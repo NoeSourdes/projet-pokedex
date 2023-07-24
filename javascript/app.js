@@ -46,7 +46,7 @@ buttonToggle.addEventListener("click", () => {
 let allPokemon = [];
 let finalyArray = [];
 const urlPokeIdSpecies = "https://pokeapi.co/api/v2/pokemon-species/";
-const urlPokeIdPicture = "https://pokeapi.co/api/v2/pokemon/";
+const urlPokeIdInfo = "https://pokeapi.co/api/v2/pokemon/";
 const loader = document.querySelector(".loader");
 
 const fetchData = async () => {
@@ -71,6 +71,7 @@ const fetchPokemon = async (pokemon) => {
   let url = pokemon.url;
   const resultFetchPokemon = await fetch(url);
   const data = await resultFetchPokemon.json();
+  console.log(data);
   objPokemon.pic = data.sprites.front_default;
   objPokemon.id = data.id;
   objPokemon.type = data.types[0].type.name;
@@ -130,17 +131,42 @@ const addContent = async (arr) => {
       displayInfoPoke();
       const contentPoke = e.currentTarget;
       let pokeId = contentPoke.dataset.pokeId;
-      const resultInfoPoke = await fetchDataSpeciesPokemonHandleCLick(
+      const resultInfoSpeciesPoke = await fetchDataSpeciesPokemonHandleCLick(
         urlPokeIdSpecies,
         pokeId
       );
-      const resultPicturePoke = await fetchDataPicturePokemonHandleClick(
-        urlPokeIdPicture,
+      const resultInfoPoke = await fetchDataInfoPokemonHandleClick(
+        urlPokeIdInfo,
         pokeId
       );
-      let urlPicturePoke = resultPicturePoke.sprites.front_default;
+      let urlPictureGifPoke =
+        resultInfoPoke.sprites.versions["generation-v"]["black-white"].animated
+          .front_default;
+      let urlPicturePoke = resultInfoPoke.sprites.front_default;
       const modalImg = document.querySelector(".imgInfoPoke");
-      modalImg.src = urlPicturePoke;
+      if (resultInfoPoke.id >= 650) {
+        modalImg.src = urlPicturePoke;
+      } else {
+        modalImg.src = urlPictureGifPoke;
+      }
+      document.getElementById(
+        "id-pokemon"
+      ).innerHTML = `N°${resultInfoPoke.id}`;
+      document.getElementById("name-pokemon").innerHTML =
+        resultInfoSpeciesPoke.names[4].name;
+      let typePoke = document.getElementById("type-pokemon");
+      typePoke.innerHTML = resultInfoPoke.types[0].type.name;
+      typePoke.style.background = pokeTypeColor;
+      document.getElementById("height-pokemon").innerHTML = `${
+        resultInfoPoke.height / 10
+      }m`;
+      document.getElementById("weight-pokemon").innerHTML = `${
+        resultInfoPoke.weight / 10
+      }kg`;
+      let flavor_text =
+        resultInfoSpeciesPoke.flavor_text_entries[0].flavor_text;
+      flavor_text = flavor_text.replace(/\f/g, " ").toLowerCase();
+      document.getElementById("info-pokemon").innerHTML = flavor_text;
     };
 
     content.addEventListener("click", handleClickInfoPoke);
@@ -170,7 +196,7 @@ const fetchDataSpeciesPokemonHandleCLick = async (urlPokeIdSpecies, pokeId) => {
   const result = fetch(urlPokeIdSpecies + pokeId);
   return (await result).json();
 };
-const fetchDataPicturePokemonHandleClick = async (urlPokeIdPicture, pokeId) => {
+const fetchDataInfoPokemonHandleClick = async (urlPokeIdPicture, pokeId) => {
   const result = fetch(urlPokeIdPicture + pokeId);
   return (await result).json();
 };

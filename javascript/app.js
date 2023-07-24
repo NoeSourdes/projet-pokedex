@@ -53,9 +53,15 @@ const fetchData = async () => {
   const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
   const result = await fetch(url);
   const data = await result.json();
-  data.results.forEach((pokemon) => {
-    fetchPokemon(pokemon);
-  });
+  const fetchPromises = data.results.map((pokemon) => fetchPokemon(pokemon));
+  allPokemon = await Promise.all(fetchPromises);
+  finalyArray = allPokemon
+    .sort((a, b) => {
+      return a.id - b.id;
+    })
+    .slice(0, 30);
+  await addContent(finalyArray);
+  loader.style.transform = "translateY(-100vh)";
 };
 fetchData();
 
@@ -124,7 +130,6 @@ const addContent = async (arr) => {
       displayInfoPoke();
       const contentPoke = e.currentTarget;
       let pokeId = contentPoke.dataset.pokeId;
-      console.log(pokeId);
       const resultInfoPoke = await fetchDataSpeciesPokemonHandleCLick(
         urlPokeIdSpecies,
         pokeId
@@ -134,7 +139,6 @@ const addContent = async (arr) => {
         pokeId
       );
       let urlPicturePoke = resultPicturePoke.sprites.front_default;
-      console.log(urlPicturePoke);
       const modalImg = document.querySelector(".imgInfoPoke");
       modalImg.src = urlPicturePoke;
     };
@@ -209,7 +213,6 @@ function research() {
   const filteredPokemon = allPokemon.filter((pokemon) =>
     pokemon.name.toLowerCase().includes(valueInput)
   );
-  console.log(filteredPokemon);
   if (filteredPokemon.length === 0) {
     container.innerHTML = `<h2>Aucun pokémon n'a été trouvé</h2>`;
   } else {

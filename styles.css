@@ -55,6 +55,10 @@
   --clr-red: #ff503a;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin-top: 100px;
   background: var(--clr-bcg);
@@ -219,6 +223,25 @@ body .main-container .container .content h2 {
 body .main-container .container .content span {
   color: var(--clr-font-secondary);
 }
+body .main-container .button-scroll-to-top {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s all;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  padding: 15px;
+  background: var(--clr-font-primary);
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  color: var(--clr-bcg);
+  z-index: 100;
+  cursor: pointer;
+}
+body .main-container .button-scroll-to-top ion-icon {
+  font-size: 35px;
+}
 body #bloc-transition-theme {
   visibility: hidden;
   transition: 2.5s all;
@@ -375,6 +398,13 @@ body::-webkit-scrollbar {
   }
   .main-container .container .content h2 {
     font-size: 20px;
+  }
+  .main-container .button-scroll-to-top {
+    bottom: 30px !important;
+    right: 30px !important;
+  }
+  .main-container .button-scroll-to-top ion-icon {
+    font-size: 25px !important;
   }
 }
 @media screen and (max-width: 960px) {

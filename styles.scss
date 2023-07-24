@@ -54,7 +54,9 @@
   --clr-shadow-button-toggle-theme-2: #ffffff;
   --clr-red: #ff503a;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   .loader {
     overflow: hidden;
@@ -216,6 +218,25 @@ body {
         span {
           color: var(--clr-font-secondary);
         }
+      }
+    }
+    .button-scroll-to-top {
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s all;
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      padding: 15px;
+      background: var(--clr-font-primary);
+      border: none;
+      outline: none;
+      border-radius: 10px;
+      color: var(--clr-bcg);
+      z-index: 100;
+      cursor: pointer;
+      ion-icon {
+        font-size: 35px;
       }
     }
   }
@@ -388,6 +409,13 @@ body::-webkit-scrollbar {
         h2 {
           font-size: 20px;
         }
+      }
+    }
+    .button-scroll-to-top {
+      bottom: 30px !important;
+      right: 30px !important;
+      ion-icon {
+        font-size: 25px !important;
       }
     }
   }

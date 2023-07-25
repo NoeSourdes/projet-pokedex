@@ -74,7 +74,9 @@ const fetchPokemon = async (pokemon) => {
   objPokemon.pic = data.sprites.front_default;
   objPokemon.id = data.id;
   objPokemon.type = data.types[0].type.name;
-
+  if (data.types[1] && data.types[1].type.name) {
+    objPokemon.type2 = data.types[1].type.name;
+  }
   const fetchSpeciesPokemon = await fetch(
     `https://pokeapi.co/api/v2/pokemon-species/${namePokemon}/`
   );
@@ -124,7 +126,19 @@ const addContent = async (arr) => {
     content.innerHTML += `<span class="id-poke">Nº${arr[i].id}</span>`;
     content.innerHTML += `<h2>${arr[i].name}</h2>`;
     const pokeTypeColor = typeColors[arr[i].type];
-    content.innerHTML += `<span style="background:${pokeTypeColor}; color: #ffffff; border-radius: 5px; padding: 3px 5px">${arr[i].type}</span>`;
+    const pokeType2Color = typeColors[arr[i].type2];
+    content.innerHTML += `
+  <div style="display: flex">
+    <span style="background:${pokeTypeColor}; color: #ffffff; border-radius: 5px; padding: 3px 5px">${
+      arr[i].type
+    }</span>
+    ${
+      arr[i].type2
+        ? `<span style="background:${pokeType2Color}; color: #ffffff; border-radius: 5px; padding: 3px 5px; margin-left: 10px">${arr[i].type2}</span>`
+        : ""
+    }
+  </div>
+`;
     content.dataset.pokeId = arr[i].id;
     const handleClickInfoPoke = async (e) => {
       displayInfoPoke();
@@ -153,9 +167,13 @@ const addContent = async (arr) => {
       ).innerHTML = `N°${resultInfoPoke.id}`;
       document.getElementById("name-pokemon").innerHTML =
         resultInfoSpeciesPoke.names[4].name;
-      let typePoke = document.getElementById("type-pokemon");
+      let typePoke = document.getElementById("type1-pokemon");
       typePoke.innerHTML = resultInfoPoke.types[0].type.name;
       typePoke.style.background = pokeTypeColor;
+      let typePoke2 = document.getElementById("type2-pokemon");
+      typePoke2.innerHTML = resultInfoPoke.types[1].type.name;
+      typePoke2.style.background =
+        typeColors[resultInfoPoke.types[1].type.name];
       document.getElementById("height-pokemon").innerHTML = `${
         resultInfoPoke.height / 10
       }m`;

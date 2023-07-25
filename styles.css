@@ -600,6 +600,9 @@ body::-webkit-scrollbar {
     width: 100% !important;
     margin-bottom: 50px;
   }
+  .div-modal-and-overlay .modal .content-modal .right .imgInfoPoke {
+    height: 100px !important;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

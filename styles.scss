@@ -617,6 +617,9 @@ body::-webkit-scrollbar {
           justify-content: flex-start !important;
           width: 100% !important;
           margin-bottom: 50px;
+          .imgInfoPoke {
+            height: 100px !important;
+          }
         }
       }
     }

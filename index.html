@@ -23,6 +23,7 @@
     ></script>
     <script src="javascript/app.js" defer></script>
     <script src="javascript/scrollToTop.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div class="loader">
@@ -137,16 +138,27 @@
             <p id="info-pokemon"></p>
             <div class="height-and-weight">
               <div class="height">
-                <p class="p-height">Hauteur</p>
+                <p class="p-height">Height</p>
                 <p id="height-pokemon"></p>
               </div>
               <div class="weight">
-                <p class="p-weight">Poids</p>
+                <p class="p-weight">Weight</p>
                 <p id="weight-pokemon"></p>
               </div>
             </div>
           </div>
-          <div class="right"></div>
+          <div class="right">
+            <div class="container-abilities">
+              <p class="name-abilities">Abilities</p>
+              <div class="value-abilities">
+                <p id="abilities-1">abilities 1</p>
+                <p id="abilities-2">abilities 2</p>
+              </div>
+            </div>
+            <div class="graph">
+              <canvas id="chart"></canvas>
+            </div>
+          </div>
         </div>
       </div>
     </div>

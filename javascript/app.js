@@ -38,7 +38,7 @@ buttonToggle.addEventListener("click", () => {
   setTimeout(() => {
     body.classList.toggle("theme-dark");
     body.classList.toggle("theme-light");
-  }, 700);
+  }, 600);
   buttonToogleThemeCircle.classList.toggle("mouv-button");
 });
 // gestion de l'API pokeAPI :
@@ -71,7 +71,6 @@ const fetchPokemon = async (pokemon) => {
   let url = pokemon.url;
   const resultFetchPokemon = await fetch(url);
   const data = await resultFetchPokemon.json();
-  console.log(data);
   objPokemon.pic = data.sprites.front_default;
   objPokemon.id = data.id;
   objPokemon.type = data.types[0].type.name;
@@ -167,6 +166,71 @@ const addContent = async (arr) => {
         resultInfoSpeciesPoke.flavor_text_entries[0].flavor_text;
       flavor_text = flavor_text.replace(/\f/g, " ").toLowerCase();
       document.getElementById("info-pokemon").innerHTML = flavor_text;
+      document.getElementById("abilities-1").innerHTML =
+        resultInfoPoke.abilities[0].ability.name;
+      document.getElementById("abilities-2").innerHTML =
+        resultInfoPoke.abilities[1].ability.name;
+      // gestion de chart.js graphique :
+
+      const data = {
+        labels: ["CV", "CTA", "DEF", "SPA", "Spd", "SPD"],
+        datasets: [
+          {
+            label: "Stats",
+            data: [
+              resultInfoPoke.stats[0].base_stat,
+              resultInfoPoke.stats[1].base_stat,
+              resultInfoPoke.stats[2].base_stat,
+              resultInfoPoke.stats[3].base_stat,
+              resultInfoPoke.stats[4].base_stat,
+              resultInfoPoke.stats[5].base_stat,
+            ],
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(255, 159, 64, 0.2)",
+              "rgba(255, 205, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+              "rgba(201, 203, 207, 0.2)",
+            ],
+            borderColor: [
+              "rgb(255, 99, 132)",
+              "rgb(255, 159, 64)",
+              "rgb(255, 205, 86)",
+              "rgb(75, 192, 192)",
+              "rgb(54, 162, 235)",
+              "rgb(153, 102, 255)",
+              "rgb(201, 203, 207)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      };
+
+      const options = {
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            stacked: true,
+            grid: {
+              display: true,
+              color: "rgba(255,99,132,0.2)",
+            },
+          },
+          x: {
+            grid: {
+              display: false,
+            },
+          },
+        },
+      };
+
+      new Chart("chart", {
+        type: "bar",
+        options: options,
+        data: data,
+      });
     };
 
     content.addEventListener("click", handleClickInfoPoke);

@@ -591,6 +591,9 @@ body::-webkit-scrollbar {
     border-radius: 0 !important;
     width: 100% !important;
   }
+  .div-modal-and-overlay .modal .content-modal .left .imgInfoPoke {
+    height: 120px !important;
+  }
   .div-modal-and-overlay .modal .content-modal .left #name-pokemon {
     margin-bottom: 10px !important;
   }

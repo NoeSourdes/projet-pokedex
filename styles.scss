@@ -573,6 +573,7 @@ body::-webkit-scrollbar {
           top: 53%;
           left: 0;
           .graph {
+            padding: 15px !important;
             min-height: 200px !important;
           }
         }

@@ -558,6 +558,7 @@ body::-webkit-scrollbar {
     left: 0;
   }
   .div-modal-and-overlay .modal .content-modal .right .graph {
+    padding: 15px !important;
     min-height: 200px !important;
   }
 }

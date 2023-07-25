@@ -581,6 +581,18 @@ body::-webkit-scrollbar {
     border-radius: 0 !important;
     width: 100% !important;
   }
+  .div-modal-and-overlay .modal .content-modal .left #name-pokemon {
+    margin-bottom: 10px !important;
+  }
+  .div-modal-and-overlay .modal .content-modal .left #id-pokemon {
+    margin-top: 10px !important;
+  }
+  .div-modal-and-overlay .modal .content-modal .left #type-pokemon {
+    margin-bottom: 10px !important;
+  }
+  .div-modal-and-overlay .modal .content-modal .left #info-pokemon {
+    margin-bottom: 10px !important;
+  }
   .div-modal-and-overlay .modal .content-modal .right {
     height: auto !important;
     justify-content: flex-start !important;

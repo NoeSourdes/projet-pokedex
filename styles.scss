@@ -598,6 +598,18 @@ body::-webkit-scrollbar {
           justify-content: space-between !important;
           border-radius: 0 !important;
           width: 100% !important;
+          #name-pokemon {
+            margin-bottom: 10px !important;
+          }
+          #id-pokemon {
+            margin-top: 10px !important;
+          }
+          #type-pokemon {
+            margin-bottom: 10px !important;
+          }
+          #info-pokemon {
+            margin-bottom: 10px !important;
+          }
         }
         .right {
           height: auto !important;

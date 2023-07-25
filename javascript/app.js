@@ -38,7 +38,7 @@ buttonToggle.addEventListener("click", () => {
   setTimeout(() => {
     body.classList.toggle("theme-dark");
     body.classList.toggle("theme-light");
-  }, 550);
+  }, 700);
   buttonToogleThemeCircle.classList.toggle("mouv-button");
 });
 // gestion de l'API pokeAPI :
@@ -206,6 +206,7 @@ const displayInfoPoke = () => {
   const overlay = document.querySelector(".overlay-modal");
   const close = document.querySelector(".close");
   const body = document.body;
+  const button = document.querySelector(".button-scroll-to-top");
   const blocTransitionInfoPoke = document.getElementById(
     "bloc-transition-info-poke"
   );
@@ -214,10 +215,14 @@ const displayInfoPoke = () => {
   }, 700);
   body.style.overflowY = "hidden";
   blocTransitionInfoPoke.classList.add("bloc-transition-theme-animation");
+  button.style.display = "none";
   close.addEventListener("click", () => {
     setTimeout(() => {
       modalAndOverlay.style.display = "none";
     }, 800);
+    setTimeout(() => {
+      button.style.display = "flex";
+    }, 2500);
     body.style.overflowY = "visible";
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
@@ -225,6 +230,9 @@ const displayInfoPoke = () => {
     setTimeout(() => {
       modalAndOverlay.style.display = "none";
     }, 800);
+    setTimeout(() => {
+      button.style.display = "flex";
+    }, 2500);
     body.style.overflowY = "visible";
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });

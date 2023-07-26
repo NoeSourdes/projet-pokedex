@@ -262,7 +262,7 @@ function handleScroll() {
   const windowHeight = window.innerHeight;
   const documentHeight = document.documentElement.scrollHeight;
 
-  if (scrollTop + windowHeight >= documentHeight) {
+  if (scrollTop + windowHeight >= documentHeight * 0.9) {
     const nextBatch = allPokemon.slice(
       finalyArray.length,
       finalyArray.length + 30

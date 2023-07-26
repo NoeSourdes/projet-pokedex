@@ -295,8 +295,7 @@ const displayInfoPoke = () => {
   setTimeout(() => {
     modalAndOverlay.style.display = "block";
   }, 700);
-  body.style.overflowY = "hidden";
-  modalAndOverlay.style.overflowY = "visible";
+  body.style.overflowY = "visible";
   blocTransitionInfoPoke.classList.add("bloc-transition-theme-animation");
   button.style.display = "none";
   close.addEventListener("click", () => {

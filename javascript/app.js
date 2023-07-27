@@ -51,14 +51,47 @@ const loader = document.querySelector(".loader");
 
 const fetchData = async () => {
   const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
-  try {
-    const result = await fetch(url);
-    if (!result.ok) {
-      throw new Error(`Erreur HTTP : ${result.status}`);
-    }
-    const data = await result.json();
-    const fetchPromises = data.results.map((pokemon) => fetchPokemon(pokemon));
-    allPokemon = await Promise.all(fetchPromises);
+  const result = await fetch(url);
+  const data = await result.json();
+  const fetchPromises = data.results.map((pokemon) => fetchPokemon(pokemon));
+  allPokemon = await Promise.all(fetchPromises);
+  finalyArray = allPokemon
+    .sort((a, b) => {
+      return a.id - b.id;
+    })
+    .slice(0, 30);
+  await addContent(finalyArray);
+  loader.style.transform = "translateY(-100vh)";
+};
+fetchData();
+
+const fetchPokemon = async (pokemon) => {
+  let objPokemon = {};
+  let namePokemon = pokemon.name;
+  let url = pokemon.url;
+  const resultFetchPokemon = await fetch(url);
+
+  if (!resultFetchPokemon.ok) {
+    throw new Error("Erreur lors de la requête vers l'API Pokemon.");
+  }
+
+  const data = await resultFetchPokemon.json();
+  objPokemon.pic = data.sprites.front_default;
+  objPokemon.id = data.id;
+  objPokemon.type = data.types[0].type.name;
+  if (data.types[1] && data.types[1].type.name) {
+    objPokemon.type2 = data.types[1].type.name;
+  }
+
+  const fetchSpeciesPokemon = await fetch(
+    `https://pokeapi.co/api/v2/pokemon-species/${namePokemon}/`
+  );
+
+  const dataSpeciesPokemon = await fetchSpeciesPokemon.json();
+  objPokemon.name = dataSpeciesPokemon.names[4].name;
+  allPokemon.push(objPokemon);
+
+  if (allPokemon.length === 972) {
     finalyArray = allPokemon
       .sort((a, b) => {
         return a.id - b.id;
@@ -66,54 +99,6 @@ const fetchData = async () => {
       .slice(0, 30);
     await addContent(finalyArray);
     loader.style.transform = "translateY(-100vh)";
-  } catch (err) {
-    console.error("Une erreur c'est produite : ", err.message);
-    throw err;
-  }
-};
-fetchData();
-
-const fetchPokemon = async (pokemon) => {
-  try {
-    let objPokemon = {};
-    let namePokemon = pokemon.name;
-    let url = pokemon.url;
-    const resultFetchPokemon = await fetch(url);
-
-    if (!resultFetchPokemon.ok) {
-      throw new Error("Erreur lors de la requête vers l'API Pokemon.");
-    }
-
-    const data = await resultFetchPokemon.json();
-    objPokemon.pic = data.sprites.front_default;
-    objPokemon.id = data.id;
-    objPokemon.type = data.types[0].type.name;
-    if (data.types[1] && data.types[1].type.name) {
-      objPokemon.type2 = data.types[1].type.name;
-    }
-
-    const fetchSpeciesPokemon = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${namePokemon}/`
-    );
-    if (!fetchSpeciesPokemon.ok) {
-      throw new Error("Erreur lors de la requête vers l'API Pokemon Species.");
-    }
-
-    const dataSpeciesPokemon = await fetchSpeciesPokemon.json();
-    objPokemon.name = dataSpeciesPokemon.names[4].name;
-    allPokemon.push(objPokemon);
-
-    if (allPokemon.length === 972) {
-      finalyArray = allPokemon
-        .sort((a, b) => {
-          return a.id - b.id;
-        })
-        .slice(0, 30);
-      await addContent(finalyArray);
-      loader.style.transform = "translateY(-100vh)";
-    }
-  } catch (error) {
-    console.error("Une erreur s'est produite:", error.message);
   }
 };
 

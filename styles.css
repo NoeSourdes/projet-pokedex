@@ -327,9 +327,10 @@ body #bloc-transition-info-poke #svg-div-transition-theme-top path {
   fill: var(--clr-red);
 }
 body .div-modal-and-overlay {
+  overflow-y: visible;
   position: fixed;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   top: 0;
   left: 0;
   display: none;
@@ -345,7 +346,6 @@ body .div-modal-and-overlay .overlay-modal {
   cursor: pointer;
 }
 body .div-modal-and-overlay .modal {
-  overflow: hidden;
   position: absolute;
   max-width: 800px;
   max-height: 500px;

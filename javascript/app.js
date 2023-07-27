@@ -319,10 +319,10 @@ const displayInfoPoke = () => {
   const blocTransitionInfoPoke = document.getElementById(
     "bloc-transition-info-poke"
   );
+  body.style.overflow = "hidden";
   setTimeout(() => {
     modalAndOverlay.style.display = "block";
   }, 700);
-  body.style.overflowY = "visible";
   blocTransitionInfoPoke.classList.add("bloc-transition-theme-animation");
   button.style.display = "none";
   close.addEventListener("click", () => {
@@ -331,8 +331,8 @@ const displayInfoPoke = () => {
     }, 800);
     setTimeout(() => {
       button.style.display = "flex";
+      body.style.overflow = "visible";
     }, 2500);
-    body.style.overflowY = "visible";
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
   overlay.addEventListener("click", () => {
@@ -341,8 +341,8 @@ const displayInfoPoke = () => {
     }, 800);
     setTimeout(() => {
       button.style.display = "flex";
+      body.style.overflow = "visible";
     }, 2500);
-    body.style.overflowY = "visible";
     blocTransitionInfoPoke.classList.remove("bloc-transition-theme-animation");
   });
 };

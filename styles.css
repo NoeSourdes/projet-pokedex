@@ -512,6 +512,9 @@ body .div-modal-and-overlay .modal .close {
   section form #search-bar-pokemon {
     width: 80vw !important;
   }
+  .loader {
+    top: 45% !important;
+  }
   .main-container .container .content {
     width: 150px !important;
     height: 150px !important;

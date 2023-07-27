@@ -343,6 +343,7 @@ body {
       cursor: pointer;
     }
     .modal {
+      overflow-y: visible;
       position: absolute;
       max-width: 800px;
       max-height: 500px;

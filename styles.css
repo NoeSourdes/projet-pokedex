@@ -346,6 +346,7 @@ body .div-modal-and-overlay .overlay-modal {
   cursor: pointer;
 }
 body .div-modal-and-overlay .modal {
+  overflow-y: visible;
   position: absolute;
   max-width: 800px;
   max-height: 500px;

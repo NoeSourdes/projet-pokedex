@@ -438,17 +438,6 @@ body .div-modal-and-overlay .modal .content-modal .left #name-pokemon {
 body .div-modal-and-overlay .modal .content-modal .left .container-types-poke {
   display: flex;
 }
-body .div-modal-and-overlay .modal .content-modal .left .container-types-poke #type1-pokemon {
-  margin-right: 10px;
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: #fff;
-}
-body .div-modal-and-overlay .modal .content-modal .left .container-types-poke #type2-pokemon {
-  padding: 5px 10px;
-  border-radius: 5px;
-  color: #fff;
-}
 body .div-modal-and-overlay .modal .content-modal .left img {
   height: 150px;
   image-rendering: pixelated;

@@ -51,39 +51,14 @@ const loader = document.querySelector(".loader");
 
 const fetchData = async () => {
   const url = "https://pokeapi.co/api/v2/pokemon?limit=1000";
-  const result = await fetch(url);
-  const data = await result.json();
-  const fetchPromises = data.results.map((pokemon) => fetchPokemon(pokemon));
-  allPokemon = await Promise.all(fetchPromises);
-  finalyArray = allPokemon
-    .sort((a, b) => {
-      return a.id - b.id;
-    })
-    .slice(0, 30);
-  await addContent(finalyArray);
-  loader.style.transform = "translateY(-100vh)";
-};
-fetchData();
-
-const fetchPokemon = async (pokemon) => {
-  let objPokemon = {};
-  let namePokemon = pokemon.name;
-  let url = pokemon.url;
-  const resultFetchPokemon = await fetch(url);
-  const data = await resultFetchPokemon.json();
-  objPokemon.pic = data.sprites.front_default;
-  objPokemon.id = data.id;
-  objPokemon.type = data.types[0].type.name;
-  if (data.types[1] && data.types[1].type.name) {
-    objPokemon.type2 = data.types[1].type.name;
-  }
-  const fetchSpeciesPokemon = await fetch(
-    `https://pokeapi.co/api/v2/pokemon-species/${namePokemon}/`
-  );
-  const dataSpeciesPokemon = await fetchSpeciesPokemon.json();
-  objPokemon.name = dataSpeciesPokemon.names[4].name;
-  allPokemon.push(objPokemon);
-  if (allPokemon.length === 972) {
+  try {
+    const result = await fetch(url);
+    if (!result.ok) {
+      throw new Error(`Erreur HTTP : ${result.status}`);
+    }
+    const data = await result.json();
+    const fetchPromises = data.results.map((pokemon) => fetchPokemon(pokemon));
+    allPokemon = await Promise.all(fetchPromises);
     finalyArray = allPokemon
       .sort((a, b) => {
         return a.id - b.id;
@@ -91,6 +66,54 @@ const fetchPokemon = async (pokemon) => {
       .slice(0, 30);
     await addContent(finalyArray);
     loader.style.transform = "translateY(-100vh)";
+  } catch (err) {
+    console.error("Une erreur c'est produite : ", err.message);
+    throw err;
+  }
+};
+fetchData();
+
+const fetchPokemon = async (pokemon) => {
+  try {
+    let objPokemon = {};
+    let namePokemon = pokemon.name;
+    let url = pokemon.url;
+    const resultFetchPokemon = await fetch(url);
+
+    if (!resultFetchPokemon.ok) {
+      throw new Error("Erreur lors de la requête vers l'API Pokemon.");
+    }
+
+    const data = await resultFetchPokemon.json();
+    objPokemon.pic = data.sprites.front_default;
+    objPokemon.id = data.id;
+    objPokemon.type = data.types[0].type.name;
+    if (data.types[1] && data.types[1].type.name) {
+      objPokemon.type2 = data.types[1].type.name;
+    }
+
+    const fetchSpeciesPokemon = await fetch(
+      `https://pokeapi.co/api/v2/pokemon-species/${namePokemon}/`
+    );
+    if (!fetchSpeciesPokemon.ok) {
+      throw new Error("Erreur lors de la requête vers l'API Pokemon Species.");
+    }
+
+    const dataSpeciesPokemon = await fetchSpeciesPokemon.json();
+    objPokemon.name = dataSpeciesPokemon.names[4].name;
+    allPokemon.push(objPokemon);
+
+    if (allPokemon.length === 972) {
+      finalyArray = allPokemon
+        .sort((a, b) => {
+          return a.id - b.id;
+        })
+        .slice(0, 30);
+      await addContent(finalyArray);
+      loader.style.transform = "translateY(-100vh)";
+    }
+  } catch (error) {
+    console.error("Une erreur s'est produite:", error.message);
   }
 };
 
@@ -167,13 +190,17 @@ const addContent = async (arr) => {
       ).innerHTML = `N°${resultInfoPoke.id}`;
       document.getElementById("name-pokemon").innerHTML =
         resultInfoSpeciesPoke.names[4].name;
-      let typePoke = document.getElementById("type1-pokemon");
-      typePoke.innerHTML = resultInfoPoke.types[0].type.name;
-      typePoke.style.background = pokeTypeColor;
-      let typePoke2 = document.getElementById("type2-pokemon");
-      typePoke2.innerHTML = resultInfoPoke.types[1].type.name;
-      typePoke2.style.background =
-        typeColors[resultInfoPoke.types[1].type.name];
+      let typePoke = document.querySelector(".container-types-poke");
+      typePoke.innerHTML = `
+          <span style="background:${pokeTypeColor}; color: #ffffff; border-radius: 5px; padding: 3px 5px">${
+        arr[i].type
+      }</span>
+          ${
+            arr[i].type2
+              ? `<span style="background:${pokeType2Color}; color: #ffffff; border-radius: 5px; padding: 3px 5px; margin-left: 10px">${arr[i].type2}</span>`
+              : ""
+          }
+        `;
       document.getElementById("height-pokemon").innerHTML = `${
         resultInfoPoke.height / 10
       }m`;

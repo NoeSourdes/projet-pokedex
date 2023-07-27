@@ -63,9 +63,6 @@ html {
 body {
   .loader {
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 10000;
     position: fixed;
     top: 0;
@@ -75,8 +72,18 @@ body {
     background: var(--clr-bcg);
     transition: 1s all;
     .logo-pokedex-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(0deg);
       animation: animation-loader 1s infinite;
       width: 200px;
+    }
+
+    @keyframes animation-loader {
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
     }
   }
   margin-top: 100px;
@@ -495,12 +502,6 @@ body {
         color: var(--clr-font-primary);
       }
     }
-  }
-}
-
-@keyframes animation-loader {
-  to {
-    transform: rotate(360deg);
   }
 }
 

@@ -519,7 +519,9 @@ body {
     }
   }
   .loader {
-    top: 45% !important;
+    .logo-pokedex-loader {
+      top: 0 !important;
+    }
   }
   .main-container {
     .container {
